@@ -70,7 +70,7 @@ index 35b1d8bf..46d34ad8 100644
 +        y = ((y + 1) * h - 1) / 2
 +
 +    x = paddle.reshape(x, [n, -1])
-+    y = paddle.reshape(x, [n, -1])
++    y = paddle.reshape(y, [n, -1])
 +
 +    x0 = paddle.cast(paddle.floor(x), "int64")
 +    y0 = paddle.cast(paddle.floor(y), "int64")
