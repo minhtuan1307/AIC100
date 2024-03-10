@@ -46,7 +46,7 @@ index ea865a2d..1d41355e 100644
          if self.use_lenhead:
              return x, len_x
 diff --git a/ppocr/modeling/transforms/tps_spatial_transformer.py b/ppocr/modeling/transforms/tps_spatial_transformer.py
-index 35b1d8bf..3e1ee17a 100644
+index 35b1d8bf..46d34ad8 100644
 --- a/ppocr/modeling/transforms/tps_spatial_transformer.py
 +++ b/ppocr/modeling/transforms/tps_spatial_transformer.py
 @@ -26,6 +26,65 @@ from paddle.nn import functional as F
@@ -99,7 +99,7 @@ index 35b1d8bf..3e1ee17a 100644
 +    y1 = paddle.where(y1 < 0, paddle.to_tensor(0), y1)
 +    y1 = paddle.where(y1 > padded_h - 1, paddle.to_tensor(padded_h - 1), y1)
 +
-+    im_padded = im_padded.view(n, c, -1)
++    im_padded = paddle.reshape(im_padded, [n, c, -1])
 +
 +    x0_y0 = paddle.expand((x0 + y0 * padded_w).unsqueeze(1), [-1, c, -1])
 +    x0_y1 = paddle.expand((x0 + y1 * padded_w).unsqueeze(1), [-1, c, -1])
